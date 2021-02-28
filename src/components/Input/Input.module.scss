@@ -1,0 +1,76 @@
+@import "/src/styles/theme.scss";
+
+.wrapper {
+  position: relative;
+  display: flex;
+  height: 48px;
+  width: 300px;
+}
+
+.label {
+  position: absolute;
+  top: 30%;
+  left: 2px;
+
+  padding: 0 16px;
+
+  color: $textOnSurface;
+  background-color: $background;
+
+  pointer-events: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.iconButton {
+  position: absolute;
+  right: 0;
+  height: 48px;
+  width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  background-color: $secondary;
+  color: $primary;
+  border-radius: 0 $borderRadius $borderRadius 0;
+}
+
+.input {
+  appearance: none;
+  flex: 1;
+  min-width: 300px;
+
+  font-size: 14px;
+  color: $textOnSurface;
+  background-color: transparent;
+
+  border: 2px solid $secondary;
+  border-radius: $borderRadius;
+
+  padding-left: 16px;
+  padding-right: 48px;
+
+  transition: all $transition;
+
+  &:focus,
+  &:valid {
+    & + .label {
+      top: -12%;
+      left: 10px;
+
+      padding: 0 4px;
+
+      color: $secondary;
+      font-size: 12px;
+    }
+  }
+}
+
+.notFound {
+}
+
+.successful {
+}
