@@ -1,0 +1,10 @@
+@import "/src/styles/theme.scss";
+
+.avatar {
+  border-radius: $borderRadius;
+}
+
+.withBorder {
+  composes: avatar;
+  border: 2px solid $primary;
+}
