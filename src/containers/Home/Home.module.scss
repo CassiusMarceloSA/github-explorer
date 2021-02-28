@@ -5,12 +5,37 @@
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   max-width: $containerMaxWidth;
+
+  @media screen and (min-width: $containerMaxWidth) {
+    & > form,
+    & > h1 {
+      width: 550px;
+    }
+  }
 }
 
-.paragraph {
-  font-size: 32px;
+.container h1 {
+  font-size: 24px;
   line-height: 150%;
+  text-align: center;
+  color: $textOnSurface;
+  margin: 4rem 0;
+}
+
+.userName {
+  color: $title;
+  font-size: 24px;
+
+  margin: 16px 0 8px;
+  align-self: flex-start;
+}
+
+.userNickname {
+  color: $text;
+  font-size: 16px;
+
+  margin-bottom: 16px;
+  align-self: flex-start;
 }

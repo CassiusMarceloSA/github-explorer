@@ -1,48 +1,66 @@
 import styles from "./SearchInput.module.scss";
 import { GitHubIcon, SearchIcon } from "../../assets";
 import { useState } from "react";
+import Loader from "../Loader";
 
-export default function SearchInput({ label, icon = null, id, ...props }) {
-  const [userFound, setUserFound] = useState(false);
-  const [notFound, setNotFound] = useState(false);
-
-  function clearStates() {
-    userFound && setUserFound(false);
-    notFound && setNotFound(false);
-  }
+export default function SearchInput({
+  user,
+  label,
+  icon = null,
+  id,
+  onSubmit,
+  ...props
+}) {
+  const [loading, setLoading] = useState(false);
+  const [requestStatus, setRequesStatus] = useState("");
 
   const renderIcon = () =>
-    userFound ? <GitHubIcon size="40" /> : <SearchIcon size="40" />;
+    requestStatus === "found" ? (
+      <GitHubIcon size="40" />
+    ) : (
+      <SearchIcon size="40" />
+    );
 
-  const onSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    notFound && setNotFound(false);
+    setRequesStatus("");
+    setLoading(true);
 
-    setTimeout(() => setNotFound(true), 3000);
+    const { value } = e.target[0];
+    const response = await onSubmit(value);
+
+    if (response.success) {
+      setRequesStatus("found");
+    } else {
+      setRequesStatus("notFound");
+    }
+
+    setLoading(false);
   };
 
   return (
     <form
-      className={notFound ? styles.notFound : styles.wrapper}
-      onSubmit={onSubmit}
+      className={
+        requestStatus === "notFound" ? styles.notFound : styles.wrapper
+      }
+      onSubmit={handleSubmit}
+      {...props}
     >
       <input
         required
         id={id}
         className={styles.input}
-        {...props}
-        onFocus={() => {
-          clearStates();
-        }}
-        onChange={() => {
-          clearStates();
-        }}
+        onChange={() => requestStatus === "found" && setRequesStatus("")}
+        onFocus={() => requestStatus === "found" && setRequesStatus("")}
       />
       <label className={styles.label} htmlFor={id}>
         {label}
       </label>
-      <button className={styles.iconButton} disabled={userFound}>
-        {renderIcon()}
+      <button
+        className={styles.iconButton}
+        disabled={requestStatus === "found"}
+      >
+        {loading ? <Loader size="30" color="primary" /> : renderIcon()}
       </button>
     </form>
   );

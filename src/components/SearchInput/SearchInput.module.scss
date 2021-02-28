@@ -27,7 +27,7 @@
   position: relative;
   display: flex;
   height: 48px;
-  width: 300px;
+  width: 100%;
 }
 
 .label {
@@ -60,9 +60,12 @@
   color: $primary;
   border-radius: 0 $borderRadius $borderRadius 0;
 
+  cursor: pointer;
+
   &:disabled {
     background-color: transparent;
     color: $secondary;
+    cursor: not-allowed;
   }
 }
 

@@ -10,5 +10,8 @@
 
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
-  padding: 40px 32px 16px;
+  padding: 16px;
+
+  width: 100%;
+  max-width: 300px;
 }
