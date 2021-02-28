@@ -1,0 +1,16 @@
+@import "/src/styles/theme.scss";
+
+.header {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $background;
+  color: $textOnSurface;
+}
+
+.logo {
+  margin: 24px 0;
+}
