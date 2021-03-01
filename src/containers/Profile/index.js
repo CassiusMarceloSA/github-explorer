@@ -23,7 +23,7 @@ const MOST_VISITED_CATEGORY = "starred";
 
 const category = {
   starred: "Mais visitados",
-  repos: "Meus Repositórios",
+  repos: "seus Repositórios",
 };
 
 export default function Profile() {
@@ -63,7 +63,7 @@ export default function Profile() {
   }, []);
 
   const renderButtonContent = () => {
-    return isMyReposList() ? "Ver mais visitados" : "Ver meus repos";
+    return isMyReposList() ? "Ver mais visitados" : "Ver seus repos";
   };
 
   const buttonIcon = () => {
