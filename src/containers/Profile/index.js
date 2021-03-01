@@ -54,7 +54,6 @@ export default function Profile() {
     }
 
     if (username === user?.login) {
-      console.log("here");
       handleRepoList(getCurrentUserRepos, MY_REPOS_CATEGORY);
       return;
     } else {
