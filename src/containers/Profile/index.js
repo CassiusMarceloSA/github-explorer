@@ -88,7 +88,11 @@ export default function Profile() {
             width="50%"
             style={{ alignSelf: "center" }}
           />
-          <Anchor link={user?.html_url} style={{ alignSelf: "center" }}>
+          <Anchor
+            isExternal
+            link={user?.html_url}
+            style={{ alignSelf: "center" }}
+          >
             Visitar perfil
           </Anchor>
           <Title>{user?.name}</Title>

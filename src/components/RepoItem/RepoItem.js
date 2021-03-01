@@ -9,7 +9,7 @@ export default function RepoItem({ repo }) {
         {repo.name}
       </Text>
       {!repo.private && (
-        <Anchor secondary link={repo.html_url}>
+        <Anchor isExternal secondary link={repo.html_url}>
           Ver repo
         </Anchor>
       )}

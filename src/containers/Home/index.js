@@ -29,7 +29,6 @@ export default function Home() {
       setSearchStatus("initial");
     } else {
       setUser(null);
-      console.log(userResponse.status);
       if (userResponse.status === 404) {
         setSearchStatus("notFound");
       } else {
@@ -48,7 +47,7 @@ export default function Home() {
         onSubmit={onSubmit}
       />
       {user ? (
-        <Card>
+        <Card withAnimation>
           <Avatar
             src={user.avatar_url}
             alt={`Imagem de pefil do usuário ${user.name}`}

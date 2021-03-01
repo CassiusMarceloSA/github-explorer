@@ -1,8 +1,11 @@
 import styles from "./Card.module.scss";
 
-export default function Card({ children, ...props }) {
+export default function Card({ children, withAnimation, ...props }) {
   return (
-    <section className={styles.card} {...props}>
+    <section
+      className={withAnimation ? styles.cardWithAnimation : styles.card}
+      {...props}
+    >
       {children}
     </section>
   );

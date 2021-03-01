@@ -1,5 +1,22 @@
 @import "/src/styles/theme.scss";
 
+@keyframes bottomToUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.35);
+  }
+
+  80% {
+    opacity: 0.5;
+    transform: translateY(-10%) scale(1.15);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
 .card {
   display: flex;
   align-items: center;
@@ -14,4 +31,9 @@
 
   width: 100%;
   max-width: 300px;
+}
+
+.cardWithAnimation {
+  composes: card;
+  animation: bottomToUp 0.8s ease-in-out both;
 }
