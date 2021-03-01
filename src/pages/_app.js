@@ -8,6 +8,7 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Github Explorer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="icon.svg" type="image/png" />
       </Head>
       <Header />
       <UserContext.Provider>
