@@ -1,0 +1,17 @@
+@import "/src/styles/theme.scss";
+
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: $containerMaxWidth;
+  padding: 0 36px;
+
+  overflow: hidden;
+}
+
+.listWrapper {
+}

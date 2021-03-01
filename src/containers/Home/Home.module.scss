@@ -22,6 +22,11 @@
   text-align: center;
   color: $textOnSurface;
   margin: 4rem 0;
+  width: 300px;
+
+  @media screen and (min-width: $containerMaxWidth) {
+    width: 550px;
+  }
 }
 
 .userName {
