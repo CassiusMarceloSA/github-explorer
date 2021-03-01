@@ -6,7 +6,7 @@ function App({ Component, pageProps }) {
     <>
       <Header />
       <UserContext.Provider>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </UserContext.Provider>
     </>
   );
