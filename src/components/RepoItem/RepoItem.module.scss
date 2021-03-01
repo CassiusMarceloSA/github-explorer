@@ -1,0 +1,19 @@
+@import "/src/styles/theme.scss";
+
+.repo {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & + .repo {
+    margin-top: 8px;
+  }
+
+  & > p {
+    flex: 1;
+  }
+
+  &:hover {
+    filter: brightness(75%);
+  }
+}
