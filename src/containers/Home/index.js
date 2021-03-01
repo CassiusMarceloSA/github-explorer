@@ -10,6 +10,8 @@ const renderTextByStatus = {
   searching: "Estamos procurando pelo usuário...",
   initial: "Procure por usuários do GitHub utilizando o campo de busca acima",
   notFound: "Opa. Nenhum usuário foi encontrado",
+  genericError:
+    "Opa. Aconteceu algum erro, por favor verifique sua internet e tente novamente",
 };
 
 export default function Home() {
@@ -27,7 +29,12 @@ export default function Home() {
       setSearchStatus("initial");
     } else {
       setUser(null);
-      setSearchStatus("notFound");
+      console.log(userResponse.status);
+      if (userResponse.status === 404) {
+        setSearchStatus("notFound");
+      } else {
+        setSearchStatus("genericError");
+      }
     }
 
     return userResponse;
