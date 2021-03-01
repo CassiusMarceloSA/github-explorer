@@ -50,7 +50,7 @@ export async function getCurrentUserRepos(username) {
   }
 }
 
-export async function getCurrentUserStarred(username) {
+export async function getCurrentUserStarredRepos(username) {
   const requestUrl = `${githubUrl}/${username}/starred`;
 
   try {
