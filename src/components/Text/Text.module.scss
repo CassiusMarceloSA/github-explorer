@@ -1,0 +1,14 @@
+@import "/src/styles/theme.scss";
+
+.paragraph {
+  color: $text;
+  font-size: 16px;
+
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.paragraphWhite {
+  composes: paragraph;
+  color: $white;
+}

@@ -1,0 +1,14 @@
+@import "/src/styles/theme.scss";
+
+.title {
+  color: $title;
+  font-size: 24px;
+
+  margin: 16px 0 8px;
+  align-self: flex-start;
+}
+
+.titleWhite {
+  composes: title;
+  color: $white;
+}
