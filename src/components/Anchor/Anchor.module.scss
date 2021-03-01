@@ -1,0 +1,31 @@
+@import "/src/styles/theme.scss";
+
+.anchor {
+  appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 8px 0;
+
+  color: $primary;
+  font-weight: 500;
+
+  & > svg {
+    margin-left: 8px;
+  }
+
+  &:hover {
+    text-decoration: underline 2px solid $primary;
+  }
+}
+
+.anchorSecondary {
+  composes: anchor;
+  color: $secondary;
+
+  &:hover {
+    text-decoration: underline 2px solid $secondary;
+  }
+}
