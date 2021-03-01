@@ -10,11 +10,12 @@
   max-width: $containerMaxWidth;
   padding: 0 36px;
 
-  overflow: hidden;
+  overflow: auto;
 
   @media screen and (min-width: $containerMaxWidth) {
     flex-direction: unset;
     justify-content: space-between;
+    overflow: hidden;
   }
 }
 
@@ -30,9 +31,10 @@
 }
 
 .listWrapper {
-  overflow: auto;
   width: 100%;
   @media screen and (min-width: $containerMaxWidth) {
+    overflow: auto;
+
     max-width: 550px;
     height: 600px;
 

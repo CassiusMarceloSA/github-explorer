@@ -2,6 +2,11 @@
 
 .avatar {
   border-radius: $borderRadius;
+  max-width: 215px;
+
+  @media screen and (min-width: $containerMaxWidth) {
+    max-width: unset;
+  }
 }
 
 .withBorder {
