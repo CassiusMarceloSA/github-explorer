@@ -51,7 +51,9 @@ export default function Home() {
           <p className={styles.userNickname}>{user.login}</p>
           <Button
             icon={<GitHubIcon />}
-            onClick={() => router.push(`${user.login}`)}
+            onClick={() => {
+              router.push(`${user.login}`);
+            }}
           >
             Ver detalhes
           </Button>

@@ -1,23 +1,4 @@
 @import "/src/styles/theme.scss";
 
 .list {
-  overflow: auto;
-  width: 100%;
-  max-width: 400px;
-
-  @media screen and (min-width: $containerMaxWidth) {
-    padding-right: 8px;
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-    &::-webkit-scrollbar-track {
-      background: #111340;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-  }
 }

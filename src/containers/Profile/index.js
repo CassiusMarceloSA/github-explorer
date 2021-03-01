@@ -16,7 +16,7 @@ import {
   getCurrentUserStarredRepos,
 } from "../../services";
 import styles from "./Profile.module.scss";
-import { ReposIcon, StarIcon } from "../../assets";
+import { BackIcon, ReposIcon, StarIcon } from "../../assets";
 
 const MY_REPOS_CATEGORY = "repos";
 const MOST_VISITED_CATEGORY = "starred";
@@ -46,8 +46,21 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    console.log(router.query["user"]);
-    handleRepoList(getCurrentUserRepos, MY_REPOS_CATEGORY);
+    const username = router.query["user"];
+
+    if (!username || !user) {
+      router.push("/");
+      return;
+    }
+
+    if (username === user?.login) {
+      console.log("here");
+      handleRepoList(getCurrentUserRepos, MY_REPOS_CATEGORY);
+      return;
+    } else {
+      router.push("/");
+      return;
+    }
   }, []);
 
   const renderButtonContent = () => {
@@ -60,46 +73,60 @@ export default function Profile() {
 
   return (
     <main className={styles.container}>
-      <Card style={{ alignItems: "flex-start" }}>
-        <Avatar
-          src={user?.avatar_url}
-          alt={`Imagem de pefil do usuário ${user?.name}`}
-          width="50%"
-          style={{ alignSelf: "center" }}
-        />
-        <Anchor link={user?.html_url} style={{ alignSelf: "center" }}>
-          Visitar perfil
-        </Anchor>
-        <Title>{user?.name}</Title>
-        <Text>{user?.login}</Text>
-        {user?.bio && (
-          <Text style={{ margin: "8px 0 16px", fontSize: "12px" }}>
-            {user?.bio}
-          </Text>
-        )}
-        <Text style={{ marginBottom: "4px", fontSize: "12px" }}>
-          {user?.followers} seguidores
-        </Text>
-        <Text style={{ fontSize: "12px" }}>{user?.following} seguindo</Text>
-        <Button
-          style={{
-            alignSelf: "center",
-            width: "210px",
-            justifyContent: "center",
-            outline: "none",
-          }}
-          icon={!loading && buttonIcon()}
-          onClick={() => {
-            if (isMyReposList()) {
-              handleRepoList(getCurrentUserStarredRepos, MOST_VISITED_CATEGORY);
-            } else {
-              handleRepoList(getCurrentUserRepos, MY_REPOS_CATEGORY);
-            }
-          }}
+      <div className={styles.cardWrapper}>
+        <Anchor
+          link="/"
+          secondary
+          style={{ flexDirection: "row-reverse", justifyContent: "flex-end" }}
+          icon={<BackIcon />}
         >
-          {loading ? <Loader size="30" /> : renderButtonContent()}
-        </Button>
-      </Card>
+          Voltar para início
+        </Anchor>
+        <Card style={{ alignItems: "flex-start" }}>
+          <Avatar
+            src={user?.avatar_url}
+            alt={`Imagem de pefil do usuário ${user?.name}`}
+            width="50%"
+            style={{ alignSelf: "center" }}
+          />
+          <Anchor link={user?.html_url} style={{ alignSelf: "center" }}>
+            Visitar perfil
+          </Anchor>
+          <Title>{user?.name}</Title>
+          <Text>{user?.login}</Text>
+          {user?.bio && (
+            <Text style={{ margin: "8px 0 16px", fontSize: "12px" }}>
+              {user?.bio}
+            </Text>
+          )}
+          <Text style={{ marginBottom: "4px", fontSize: "12px" }}>
+            {user?.followers} seguidores
+          </Text>
+          <Text style={{ fontSize: "12px" }}>{user?.following} seguindo</Text>
+          <Button
+            style={{
+              alignSelf: "center",
+              width: "210px",
+              justifyContent: "center",
+              outline: "none",
+            }}
+            icon={!loading && buttonIcon()}
+            onClick={() => {
+              if (isMyReposList()) {
+                handleRepoList(
+                  getCurrentUserStarredRepos,
+                  MOST_VISITED_CATEGORY
+                );
+              } else {
+                handleRepoList(getCurrentUserRepos, MY_REPOS_CATEGORY);
+              }
+            }}
+          >
+            {loading ? <Loader size="30" /> : renderButtonContent()}
+          </Button>
+        </Card>
+      </div>
+
       <div className={styles.listWrapper}>
         <Title white>{category[listCategory]}</Title>
         <RepoList list={repoList} />

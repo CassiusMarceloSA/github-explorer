@@ -11,7 +11,43 @@
   padding: 0 36px;
 
   overflow: hidden;
+
+  @media screen and (min-width: $containerMaxWidth) {
+    flex-direction: unset;
+    justify-content: space-between;
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  & > a {
+    margin-bottom: 16px;
+    & > svg {
+      margin-right: 8px;
+    }
+  }
 }
 
 .listWrapper {
+  overflow: auto;
+  width: 100%;
+  @media screen and (min-width: $containerMaxWidth) {
+    max-width: 550px;
+    height: 600px;
+
+    padding-right: 8px;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #111340;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
 }
